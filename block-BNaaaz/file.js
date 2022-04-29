@@ -1,13 +1,13 @@
-let http=require('http');
-let fs=require('fs');
+var http=require('http');
+var fs=require('fs');
 
 var server=http.createServer(handleServer);
 
 function handleServer(req,res){
-    var file=fs.createReadStream('./readme.txt');
-    res.end(file.toString());
+    res.setHeader('Content-Type','text/plain');
+    fs.createReadStream('./readme.txt').pipe(res);
 }
 
-server.listen(3000,()=>{
-    console.log(`Server listening at 3000`);
+server.listen(4000,()=>{
+    console.log(`Server listening at 4000`);
 })
