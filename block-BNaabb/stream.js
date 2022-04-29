@@ -11,12 +11,11 @@ function handleRequest(req,res){
     });
 
     req.on('end',()=>{
-        console.log(store);
+        res.write(store);
+        res.end();
     });
     
-    res.write(store,'utf-8',()=>{
-        console.log(`sending response, ${store}`);
-    });
+   
 }
 
 server.listen(3456,()=>{
